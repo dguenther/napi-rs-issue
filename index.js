@@ -236,6 +236,6 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { test } = nativeBinding
+const { TestStruct } = nativeBinding
 
-module.exports.test = test
+module.exports.TestStruct = TestStruct

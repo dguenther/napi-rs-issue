@@ -9,4 +9,7 @@ export class ExternalObject<T> {
     [K: symbol]: T
   }
 }
-export function test(bi: bigint): string
+export class TestStruct {
+  toString(): string
+  static fromNumber(n: number): TestStruct
+}

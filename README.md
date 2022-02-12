@@ -10,44 +10,32 @@ You should expect to see something like this:
 
 ```
 $ cross-env RUST_BACKTRACE=1 node test.js
-thread '<unnamed>' panicked at 'index out of bounds: the len is 0 but the index is 0', C:\Users\derek\.cargo\registry\src\github.com-1ecc6299db9ec823\napi-2.0.3\src\bindgen_runtime\js_values\bigint.rs:82:7
-stack backtrace:
-   0: std::panicking::begin_panic_handler
-             at /rustc/db9d1b20bba1968c1ec1fc49616d4742c1725b4b\/library\std\src\panicking.rs:498
-   1: core::panicking::panic_fmt
-             at /rustc/db9d1b20bba1968c1ec1fc49616d4742c1725b4b\/library\core\src\panicking.rs:107
-   2: core::panicking::panic_bounds_check
-             at /rustc/db9d1b20bba1968c1ec1fc49616d4742c1725b4b\/library\core\src\panicking.rs:75
-   3: napi::bindgen_runtime::js_values::bigint::BigInt::get_u64
-   4: core::ptr::drop_in_place<alloc::vec::Vec<&napi::js_values::object_property::Property>>
-   5: node::Stop
-   6: v8::internal::Builtins::code_handle
-   7: v8::internal::Builtins::code_handle
-   8: v8::internal::Builtins::code_handle
-   9: v8::internal::Builtins::code_handle
-  10: v8::internal::SetupIsolateDelegate::SetupHeap
-  11: v8::internal::SetupIsolateDelegate::SetupHeap
-  12: v8::internal::SetupIsolateDelegate::SetupHeap
-  13: v8::internal::SetupIsolateDelegate::SetupHeap
-  14: v8::internal::SetupIsolateDelegate::SetupHeap
-  15: v8::internal::SetupIsolateDelegate::SetupHeap
-  16: v8::internal::SetupIsolateDelegate::SetupHeap
-  17: v8::internal::SetupIsolateDelegate::SetupHeap
-  18: v8::internal::SetupIsolateDelegate::SetupHeap
-  19: v8::internal::SetupIsolateDelegate::SetupHeap
-  20: v8::internal::Execution::CallWasm
-  21: v8::internal::Execution::Call
-  22: v8::Function::Call
-  23: node_api_get_module_file_name
-  24: node::Start
-  25: node::Start
-  26: node::LoadEnvironment
-  27: cppgc::internal::NormalPageSpace::linear_allocation_buffer
-  28: node::Start
-  29: RC4_options
-  30: v8::internal::compiler::RepresentationChanger::Uint32OverflowOperatorFor
-  31: BaseThreadInitThunk
-  32: RtlUserThreadStart
-note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
-error Command failed with exit code 3221226505.
+inside worker 4
+inside worker 1
+inside worker 2
+inside worker 3
+inside worker 5
+inside worker 6
+finished on worker 4
+
+node:internal/event_target:777
+  process.nextTick(() => { throw err; });
+                           ^
+Error: Class contains no `constructor`, can not new it!
+    at Object.<anonymous> (D:\repos\napi-rs-issue\test.js:14:26)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at MessagePort.<anonymous> (node:internal/main/worker_thread:187:24)
+    at MessagePort.[nodejs.internal.kHybridDispatch] (node:internal/event_target:562:20)
+    at MessagePort.exports.emitMessage (node:internal/per_context/messageport:23:28)
+Emitted 'error' event on Worker instance at:
+    at Worker.[kOnErrorMessage] (node:internal/worker:289:10)
+    at Worker.[kOnMessage] (node:internal/worker:300:37)
+    at MessagePort.<anonymous> (node:internal/worker:201:57)
+    at MessagePort.[nodejs.internal.kHybridDispatch] (node:internal/event_target:562:20)
+    at MessagePort.exports.emitMessage (node:internal/per_context/messageport:23:28)
+error Command failed with exit code 1.
 ```
